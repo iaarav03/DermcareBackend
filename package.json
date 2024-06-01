@@ -15,7 +15,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.0"
+  },
+  
   "scripts": {
     "start": "node server.js",
     "dev":"nodemon server.js"
