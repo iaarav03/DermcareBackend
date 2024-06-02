@@ -10,13 +10,23 @@ import appointmentRouter from "./router/appointmentRouter.js";
 
 const app=express();
 config({path: "./config/config.env"});
-app.use(
-  cors({
-    origin: true, // Allow requests from any origin
-    methods: ["GET", "POST", "DELETE", "PUT"], // Allow specific HTTP methods
-    credentials: true, // Allow credentials (cookies, authorization headers, etc.)
-  })
-);
+const allowedOrigins = ['http://localhost:1234', 'https://your-frontend-domain.com'];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Check if the request origin is in the list of allowed origins
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ["GET", "POST", "DELETE", "PUT"],
+  credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
+
+app.use(cors(corsOptions));
 
   app.use(
     fileUpload({
