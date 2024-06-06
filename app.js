@@ -10,7 +10,7 @@ import appointmentRouter from "./router/appointmentRouter.js";
 
 const app=express();
 config({path: "./config/config.env"});
-const allowedOrigins = ['http://localhost:1234', 'https://derm-care-new-frtontend-iwvdrbblw-iaarav03s-projects.vercel.app','https://derm-care-new-frtontend.vercel.app'];
+const allowedOrigins = ['http://localhost:1234', 'https://derm-care-new-frtontend-iwvdrbblw-iaarav03s-projects.vercel.app','https://derm-care.vercel.app'];
 
 const corsOptions = {
   origin: function (origin, callback) {
